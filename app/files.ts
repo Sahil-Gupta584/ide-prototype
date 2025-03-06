@@ -1,6 +1,5 @@
 /** @satisfies {import('@webcontainer/api').FileSystemTree} */
 
-import { FileSystemTree } from "@webcontainer/api";
 
 export const files = {
   "index.js": {

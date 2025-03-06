@@ -1,6 +1,6 @@
 'use client'
 import { WebContainer } from "@webcontainer/api";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { files } from "./files";
 
 export default function Home() {

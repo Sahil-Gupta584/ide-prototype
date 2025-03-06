@@ -1,19 +1,20 @@
 'use client'
 import { WebContainer } from "@webcontainer/api";
-import {  useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { files } from "./files";
 
 export default function Home() {
   const webcontainerRef = useRef<WebContainer | null>(null);
   const [output, setOutput] = useState<string>("");
 
-  window.addEventListener('load', async () => {
+  useEffect(() => {
+
     const textareaEl = document.querySelector('textarea')
     async function initWbc() {
       const iframeEl = document.querySelector('iframe')
       if (webcontainerRef.current || !iframeEl || !textareaEl) return;
 
-      
+
       const webcontainer = await WebContainer.boot();
       await webcontainer.mount(files)
       textareaEl.value = files['index.js'].file.contents;
@@ -35,7 +36,7 @@ export default function Home() {
     })
 
 
-  })
+  }, [])
 
   function reportOutput(output: string) {
     setOutput((prev) => prev + "\n" + output);
